@@ -12,4 +12,22 @@ from collections import deque
 arrival = deque(["Denzel", "Murathi", "Gitonga"]) # The initial arrival list
 arrival.append("Cate") # Cate arrives last
 # To pop from the beginning, as first in, first out, quickly
-print(arrival.popleft())
+# print(arrival.popleft())
+
+# List comprehension
+# squares = []
+# for x in range(10):
+#     squares.append(x**2)
+# VS
+squares = [x**2 for x in range(10)]
+# print(squares)
+# For conditions
+# combo = []
+# for x in [1, 2, 3]:
+#     for y in [3, 1, 4]:
+#         if x != y:
+#             combo.append((x,y))
+
+# VS
+combo = [(x,y) for x in [1, 2, 3] for y in [3, 1, 4] if x != y]
+print(combo)
