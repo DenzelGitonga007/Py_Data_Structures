@@ -31,7 +31,14 @@ squares = [x**2 for x in range(10)]
 # VS
 combo = [(x,y) for x in [1, 2, 3] for y in [3, 1, 4] if x != y]
 # print(combo)
+
 # To print the squares of certain numbers
-squares_2 = [(x, x**2) for x in range(6)] # A tuple with a number, and its square
-for x, y in squares_2:
-    print("The square of {} is {}".format(x, y))
+# squares_2 = [(x, x**2) for x in range(6)] # A tuple with a number, and its square
+# for x, y in squares_2: # x represents the number, and y is the square
+    # print("The square of {} is {}".format(x, y))
+
+# Using the zip function
+details = ["name", "age", "favorite color"]
+submissions = ["Denzel", 21, "blue"]
+for q, a in zip(details, submissions):
+    print("What is your {0}?\nIt is {1}".format(q, a))
