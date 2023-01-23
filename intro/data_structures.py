@@ -5,4 +5,11 @@ stack = [3, 4, 5]
 stack.append(7)
 # Pop out the last item
 # stack.pop()
-print(stack.pop())
+# print(stack.pop())
+
+# List as queues
+from collections import deque
+arrival = deque(["Denzel", "Murathi", "Gitonga"]) # The initial arrival list
+arrival.append("Cate") # Cate arrives last
+# To pop from the beginning, as first in, first out, quickly
+print(arrival.popleft())
