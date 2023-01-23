@@ -30,4 +30,7 @@ squares = [x**2 for x in range(10)]
 
 # VS
 combo = [(x,y) for x in [1, 2, 3] for y in [3, 1, 4] if x != y]
-print(combo)
+# print(combo)
+squares_2 = [(x, x**2) for x in range(6)]
+for x, y in squares_2:
+    print("The square of {} is {}".format(x, y))
