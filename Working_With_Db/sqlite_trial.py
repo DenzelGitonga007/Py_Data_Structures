@@ -71,3 +71,17 @@ def create_tables(con):
 con = db_connection()
 
 create_tables(con)
+
+#Function to show table structure
+def show_table_structure(table_name, con):
+    cursorObj = con.cursor()
+    # Display the structure of the hospital table
+    table_info = cursorObj.execute("PRAGMA table_info("+table_name+ ");")
+    print(" \t Table Structure ")
+    print("=====================================\n")
+    for x in table_info.fetchall():
+        print(x)
+    print("=====================================\n")   
+#con = db_connection() 
+show_table_structure('hospital_details', con)
+show_table_structure('doctors_details', con)
