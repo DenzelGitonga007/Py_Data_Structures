@@ -85,3 +85,12 @@ def show_table_structure(table_name, con):
 #con = db_connection() 
 show_table_structure('hospital_details', con)
 show_table_structure('doctors_details', con)
+
+# Insert record(s)
+def table_insert(con, values):
+    cursorObj = con.cursor()   
+    cursorObj.execute('INSERT INTO hospital_details VALUES(?, ?, ?)', values)   
+    print("Record inserted successfully")
+    con.commit()
+values = (1, 'Nairobi Hospital', 400)
+table_insert(con, values)
