@@ -16,3 +16,17 @@ dbversion = conn.execute("select sqlite_version();")
 print("\nSQLite Database Version is: ", dbversion.fetchall())
 
 
+# To create an in-memory database (stored in RAM), you can use the following code
+import sqlite3
+from sqlite3 import Error
+
+def create_db():
+    try:
+        conn = sqlite3.connect(':memory:')
+        print("Connection is established: Database is created in memory")
+    except Error:
+        print(Error)
+    finally:
+        conn.close()
+    
+create_db()
