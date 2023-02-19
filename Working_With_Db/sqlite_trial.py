@@ -30,3 +30,44 @@ def create_db():
         conn.close()
     
 create_db()
+
+#import libraries
+import sqlite3
+from sqlite3 import Error
+
+#Create database connection
+def db_connection():
+    try:
+        conn = sqlite3.connect('Hoapital.db')
+        return conn
+    except Error:
+        print(Error)
+        
+#Create table        
+def create_tables(con):
+    cursorObj = con.cursor()
+    
+    #Query for the first table
+    cursorObj.execute(''' CREATE TABLE IF NOT EXISTS hospital_details
+            (Hospital_id INT PRIMARY KEY NOT NULL UNIQUE,
+             Hospital_Name TEXT NOT NULL,
+             Bed_count INT NOT NULL);''')
+    #Query for the second tablw
+    cursorObj.execute(''' CREATE TABLE IF NOT EXISTS doctors_details
+            (  Doctor_id INT PRIMARY KEY NOT NULL,
+              Doctor_Name TEXT NOT NULL,
+              Hospital_id INT NOT NULL,
+              Date_joined TEXT NOT NULL,
+              Speciality TEXT NOT NULL,
+              Salary REAL NOT NULL,
+              Experience TEXT NOT NULL,
+              Email TEXT NOT NULL,
+              UNIQUE(Doctor_id, Email)
+              FOREIGN KEY (Hospital_id)
+                REFERENCES hospital_details (Hospital_id) );''')
+    print("Tables Created.")
+    con.commit()
+    
+con = db_connection()
+
+create_tables(con)
